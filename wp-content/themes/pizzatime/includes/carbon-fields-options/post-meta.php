@@ -19,5 +19,13 @@ Container::make( 'post_meta', 'Дополнительные поля' )
         Field::make( 'text', 'top_btn_scroll_to', 'Класс секции для перехода по кнопке' )
         ->set_width(50),
         Field::make( 'image', 'top_img', 'Главное изображение' ),
+    ])
+    ->add_tab( 'Каталог', [
+        Field::make( 'text', 'catalog_title', 'Заголовок Меню' ),
+    ])
+    ->add_tab( 'О нас', [
+        Field::make( 'text', 'about_title', 'Заголовок о нас' ),
+        Field::make( 'text', 'about_text', 'Текст о нас' ),
+        Field::make( 'image', 'about_img', 'Изображение о нас' ),
     ]);
 

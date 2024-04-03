@@ -12,7 +12,7 @@ $link_image = wp_get_attachment_image_url(carbon_get_post_meta($page_id, 'top_im
 ?>
 
     <!-- section-top -->
-    <section class="section-top lazy" data-src="<?php echo $link_image; ?>" data-src-replace-webp="<?php echo get_template_directory_uri(); ?>/assets/img/section-top/bg.jpg">
+    <section class="section-top lazy" data-src="<?php echo convertToWebpSrc($link_image); ?>" data-src-replace-webp="<?php echo $link_image?>">
         <div class="container section-top__container">
             <p class="section-top__info"><?php echo carbon_get_post_meta( $page_id, 'top_info' ); ?></p>
             <h1 class="section-top__title"><?php echo carbon_get_post_meta($page_id, 'top_title'); ?></h1>
@@ -22,12 +22,14 @@ $link_image = wp_get_attachment_image_url(carbon_get_post_meta($page_id, 'top_im
         </div>
     </section>
     <!-- /.section-top -->
+<?php
 
+?>
     <!-- section-catalog -->
     <section class="section section-catalog" id="section-catalog">
         <div class="container">
             <header class="section__header">
-                <h2 class="page-title page-title--accent">Меню</h2>
+                <h2 class="page-title page-title--accent"><?php echo carbon_get_post_meta($page_id, 'catalog_title'); ?></h2>
                 <nav class="catalog-nav">
                     <ul class="catalog-nav__wrapper">
                         <li class="catalog-nav__item">
@@ -298,13 +300,12 @@ $link_image = wp_get_attachment_image_url(carbon_get_post_meta($page_id, 'top_im
     <section class="section section-about">
         <picture>
             <source type="image/webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-srcset="<?php echo get_template_directory_uri(); ?>/assets/img/section-about/bg.webp">
-            <img class="section-about__img lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="<?php echo get_template_directory_uri(); ?>/assets/img/section-about/bg.jpg" alt="">
+            <img class="section-about__img lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="<?php echo wp_get_attachment_image_url(carbon_get_post_meta($page_id, 'about_img')); ?> alt="">
         </picture>
         <div class="container section-about__container">
             <div class="section-about__content">
-                <h2 class="page-title section-about__title">О нас</h2>
-                <p class="section-about__text">Доставим вам горячую пиццу менее чем за час или пицца бесплатно.
-                    Мы готовим пиццу только из свежих продуктов. Каждый день мы покупаем свежие овощи, грибы и мясо.</p>
+                <h2 class="page-title section-about__title"><?php echo carbon_get_post_meta($page_id, 'about_title'); ?></h2>
+                <p class="section-about__text"><?php echo carbon_get_post_meta($page_id, 'about_text'); ?></p>
             </div>
         </div>
     </section>

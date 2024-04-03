@@ -66,3 +66,11 @@ function create_global_variables(){
 
     ];
 }
+
+// http://wodpres.loc/wp-content/uploads/2024/04/bg.jpg
+// http://wodpres.loc/wp-content/uploads-webpc/uploads/2024/04/bg.jpg.webp
+
+function convertToWebpSrc($src){
+    $src_webp = str_replace('uploads', 'uploads-webpc/uploads', $src) . '.webp';
+    return $src_webp;
+}
