@@ -40,29 +40,24 @@
     <div class="container header-page__container">
         <div class="header-page__start">
             <div class="logo">
-                <img class="logo__img lazy" src="<?php echo wp_get_attachment_image_url(carbon_get_theme_option( 'site_logo' )); ?>" alt="image" width="127" height="21">
+                <?php if(is_front_page()):?>
+                    <img class="logo__img lazy" src="<?php echo wp_get_attachment_image_url(carbon_get_theme_option( 'site_logo' )); ?>" alt="image" width="127" height="21">
+                <?php else: ?>
+                    <a href="<?php echo get_home_url() ?>">
+                        <img class="logo__img lazy" src="<?php echo wp_get_attachment_image_url(carbon_get_theme_option( 'site_logo' )); ?>" alt="image" width="127" height="21">
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
         <div class="header-page__end">
             <nav class="header-page__nav">
-                <ul class="header-page__ul">
-                    <li class="header-page__li">
-                        <a class="header-page__link" href="#" data-scroll-to="section-catalog">
-                            <span class="header-page__text">пицца</span>
-
-                        </a>
-                    </li>
-                    <li class="header-page__li">
-                        <a class="header-page__link" href="#" data-scroll-to="section-about">
-                            <span class="header-page__text">о нас</span>
-                        </a>
-                    </li>
-                    <li class="header-page__li">
-                        <a class="header-page__link" href="#" data-scroll-to="section-contacts">
-                            <span class="header-page__text">контакты</span>
-                        </a>
-                    </li>
-                </ul>
+                <?php
+                wp_nav_menu( [
+                    'theme_location'  => 'menu_main_header',
+                    'container'       => null,
+                    'menu_class'      => 'header-page__ul',
+                ] );
+                ?>
             </nav>
             <div class="phone">
                 <a class="phone__item header-page__phone" href="tel:<?php echo  $GLOBALS['pizza_time']['phone_digits']; ?>"><?php echo $GLOBALS['pizza_time']['phone']; ?></a>

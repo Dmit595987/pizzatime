@@ -16,6 +16,12 @@ remove_action('wp_head', 'wp_oembed_add_discovery_links'); //remove alternate
 
 add_action('wp_enqueue_scripts', 'site_scripts');
 
+add_action( 'after_setup_theme', 'theme_support' );
+
+function theme_support() {
+    register_nav_menu( 'menu_main_header', 'Меню в шапке' );
+}
+
 function site_scripts(){
     $version = '0.0.0.0';
     wp_dequeue_style( 'wp-block-library' );
@@ -43,6 +49,7 @@ add_action('carbon_fields_register_fields', 'register_carbon_fields');
 function register_carbon_fields()
 {
     require_once( 'includes/carbon-fields-options/theme-options.php' );
+    require_once( 'includes/carbon-fields-options/post-meta.php' );
 }
 
 add_action('init', 'create_global_variables');
@@ -53,6 +60,9 @@ function create_global_variables(){
         'phone_digits' => carbon_get_theme_option( 'site_phone_digits'),
         'address' => carbon_get_theme_option('site_address'),
         'map_coordinates' => carbon_get_theme_option('site_map_coordinates'),
+        'vk_url' => carbon_get_theme_option('site_vk_url'),
+        'facebook_url' => carbon_get_theme_option('site_fb_url'),
+        'inst_url' => carbon_get_theme_option('site_inst_url'),
 
     ];
 }

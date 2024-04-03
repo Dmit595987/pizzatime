@@ -16,24 +16,21 @@
             <div class="popup__content popup__content--fluid popup__content--centered">
                 <button class="btn-close popup__btn-close popup-close"></button>
                 <nav class="mobile-menu popup__mobile-menu">
-                    <ul class="mobile-menu__ul">
-                        <li class="mobile-menu__li">
-                            <a class="mobile-menu__link popup-close" href="#" data-scroll-to="section-catalog">Пицца</a>
-                        </li>
-                        <li class="mobile-menu__li">
-                            <a class="mobile-menu__link popup-close" href="#" data-scroll-to="section-about">О нас</a>
-                        </li>
-                        <li class="mobile-menu__li">
-                            <a class="mobile-menu__link popup-close" href="#" data-scroll-to="section-contacts">Контакты</a>
-                        </li>
-                    </ul>
+                    <?php
+                    wp_nav_menu( [
+                        'theme_location'  => 'menu_main_header',
+                        'container'       => null,
+                        'menu_class'      => 'mobile-menu__ul popup-close',
+                    ] );
+                    ?>
                 </nav>
                 <div class="phone popup__phone">
-                    <a class="phone__item phone__item--accent" href="tel:+79999999999">+7 (999) 999-99-99</a>
+                    <a class="phone__item phone__item--accent" href="tel:<?php echo $GLOBALS['pizza_time']['phone_digits'] ?>"><?php echo $GLOBALS['pizza_time']['phone'] ?></a>
                 </div>
                 <ul class="socials">
+                    <?php if($GLOBALS['pizza_time']['vk_url']): ?>
                     <li class="socials__item">
-                        <a href="#" class="socials__link" target="_blank">
+                        <a href="<?php echo $GLOBALS['pizza_time']['vk_url']?>" class="socials__link" target="_blank">
                             <svg class="socials__icon socials__icon--vk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112.2 112.2" width="35" height="35">
                                 <g>
                                     <circle cx="56.1" cy="56.1" r="56.1" />
@@ -42,8 +39,10 @@
                             </svg>
                         </a>
                     </li>
+                    <?php endif; ?>
+                    <?php if($GLOBALS['pizza_time']['facebook_url']): ?>
                     <li class="socials__item">
-                        <a href="#" class="socials__link" target="_blank">
+                        <a href="<?php echo $GLOBALS['pizza_time']['facebook_url']?>" class="socials__link" target="_blank">
                             <svg class="socials__icon socials__icon--fb" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112.2 112.2" width="35" height="35">
                                 <g>
                                     <circle cx="56.1" cy="56.1" r="56.1" />
@@ -52,8 +51,10 @@
                             </svg>
                         </a>
                     </li>
+                    <?php endif; ?>
+                    <?php if($GLOBALS['pizza_time']['inst_url']): ?>
                     <li class="socials__item">
-                        <a href="#" class="socials__link" target="_blank">
+                        <a href="<?php echo $GLOBALS['pizza_time']['inst_url'] ?>" class="socials__link" target="_blank">
                             <svg class="socials__icon socials__icon--inst" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="35" height="35">
                                 <g>
                                     <path d="M332.3,136.2H179.7a44.21,44.21,0,0,0-44.2,44.2V333a44.21,44.21,0,0,0,44.2,44.2H332.3A44.21,44.21,0,0,0,376.5,333V180.4A44.21,44.21,0,0,0,332.3,136.2ZM256,336a79.3,79.3,0,1,1,79.3-79.3A79.42,79.42,0,0,1,256,336Zm81.9-142.2A18.8,18.8,0,1,1,356.7,175,18.78,18.78,0,0,1,337.9,193.8Z" />
@@ -63,6 +64,7 @@
                             </svg>
                         </a>
                     </li>
+                    <?php endif;?>
                 </ul>
             </div>
         </div>

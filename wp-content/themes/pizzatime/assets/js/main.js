@@ -121,13 +121,14 @@
 
   myLib.body.addEventListener('click', function(e) {
     var target = e.target;
+    var popupItemClose = myLib.closestItemByClass(target, 'popup-close');
 
-    if (target.classList.contains('popup-close') ||
+    if (popupItemClose ||
         target.classList.contains('popup__inner')) {
-          var popup = myLib.closestItemByClass(target, 'popup');
+      var popup = myLib.closestItemByClass(target, 'popup');
 
-          closePopup(popup);
-          myLib.toggleScroll();
+      closePopup(popup);
+      myLib.toggleScroll();
     }
   });
 
@@ -307,8 +308,6 @@
       var ymap = document.querySelector('.contacts__map');
       var coordinates = ymap.getAttribute('data-coordinates');
       var address = ymap.getAttribute('data-address');
-
-      console.log(coordinates.split(','));
 
       var myMap = new ymaps.Map('ymap', {
               center: coordinates.split(','),
