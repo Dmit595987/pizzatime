@@ -25,7 +25,28 @@ Container::make( 'post_meta', 'Дополнительные поля' )
     ])
     ->add_tab( 'О нас', [
         Field::make( 'text', 'about_title', 'Заголовок о нас' ),
-        Field::make( 'text', 'about_text', 'Текст о нас' ),
+        Field::make( 'rich_text', 'about_text', 'Текст о нас' ),
         Field::make( 'image', 'about_img', 'Изображение о нас' ),
+    ])
+    ->add_tab( 'Контакты', [
+        Field::make( 'text', 'contacts_title', 'Заголовок контакты' ),
+        Field::make( 'checkbox', 'contacts_is_img', 'Показать помидоры' ),
     ]);
 
+Container::make( 'post_meta', 'Для страницы ТЕСТ' )
+    ->show_on_page(30)
+    ->add_tab( 'Настройки', [
+        Field::make( 'media_gallery', 'gallery', 'Галерея изображений' ),
+    ]);
+
+Container::make( 'post_meta', 'Товары' )
+    ->show_on_post_type('product')
+    ->add_tab( 'Настройки товара', [
+        Field::make( 'text', 'product_price', 'Цена товара' ),
+        Field::make( 'complex', 'product_attr', 'Атрибуты' )
+            ->set_max(3)
+            ->add_fields( array(
+                Field::make( 'text', 'name', 'Название' )->set_width(50),
+                Field::make( 'text', 'price', 'цена' )->set_width(50),
+            ))
+    ]);

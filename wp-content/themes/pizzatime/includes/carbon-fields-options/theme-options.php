@@ -20,4 +20,7 @@ Container::make( 'theme_options', 'Настройки сайта' )
         Field::make( 'text', 'site_vk_url', 'Вконтакте' ),
         Field::make( 'text', 'site_fb_url', 'Facebook' ),
         Field::make( 'text', 'site_inst_url', 'Instagram' ),
+    ])
+    ->add_tab( 'Подвал сайта', [
+        Field::make( 'text', 'site_footer', 'Название подвал,  год меняется автоматом' ),
     ]);

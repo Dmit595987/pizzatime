@@ -305,7 +305,7 @@ $link_image = wp_get_attachment_image_url(carbon_get_post_meta($page_id, 'top_im
         <div class="container section-about__container">
             <div class="section-about__content">
                 <h2 class="page-title section-about__title"><?php echo carbon_get_post_meta($page_id, 'about_title'); ?></h2>
-                <p class="section-about__text"><?php echo carbon_get_post_meta($page_id, 'about_text'); ?></p>
+                <div class="section-about__text"><?php echo carbon_get_post_meta($page_id, 'about_text'); ?></div>
             </div>
         </div>
     </section>
@@ -314,9 +314,11 @@ $link_image = wp_get_attachment_image_url(carbon_get_post_meta($page_id, 'top_im
     <!-- section-contacts -->
     <section class="section section-contacts">
         <div class="container section-contacts__container">
+            <?php if(carbon_get_post_meta($page_id, 'contacts_is_img')): ?>
             <div class="section-contacts__img lazy" data-src="<?php echo get_template_directory_uri(); ?>/assets/img/section-contacts/tomatoes.webp" data-src-replace-webp="img/section-contacts/tomatoes.jpg"></div>
+            <?php endif; ?>
             <header class="section__header">
-                <h2 class="page-title sectoin-contacts__title">Контакты</h2>
+                <h2 class="page-title sectoin-contacts__title"><?php echo carbon_get_post_meta($page_id, 'contacts_title'); ?></h2>
             </header>
             <div class="contacts">
                 <div class="contacts__start">

@@ -2,7 +2,7 @@
 <!-- footer-page -->
 <footer class="footer-page">
     <div class="container">
-        <div class="footer-page__text">PizzaTime <?php echo date("Y", time());?></div>
+        <div class="footer-page__text"><?php echo carbon_get_theme_option('site_footer')?> <?php echo date("Y", time());?></div>
 
     </div>
 </footer>
